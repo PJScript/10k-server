@@ -47,7 +47,7 @@ app.delete('/user/delete', withdrawal)
 // open ssl? 
 // https 변경 필요
 const http = require('http');
- 
+
 // http모듈의 createServer 함수를 호출하여 서버를 생성합니다.
 // req: request. 웹 요청 매개변수, res: response. 웹 응답 매개변수
 const server = http.createServer(function (req, res) {
@@ -57,7 +57,7 @@ const server = http.createServer(function (req, res) {
     // end: 응답 본문을 작성합니다.
     res.end('Hello World');
     // listen: 매개변수로 포트와 호스트를 지정합니다.
-}).listen(process.env.EC2);
-console.log('Server running at http://theone10k.kro.kr/');
+}).listen(4000);
+console.log('Server running at http://localhost:4000');
 
 module.exports = server;
