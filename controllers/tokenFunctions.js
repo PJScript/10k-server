@@ -33,6 +33,7 @@ module.exports = {
         const authorization = req.headers["authorization"];
         // Headers: { Authorization: "bearer JWT_TOKEN" }
         if (!authorization) {
+          console.log('헤더에 토큰이 없음')
           return null;
         }
         const token = authorization.split(" ")[1];
@@ -40,6 +41,7 @@ module.exports = {
         try {
           return verify(token, process.env.ACCESS_SECRET);
         } catch (err) {
+          console.log('토큰 인증실패')
           // 토큰 인증 실패시
           return null;
         }
