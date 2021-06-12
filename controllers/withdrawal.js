@@ -10,11 +10,11 @@ const withdrawal = async (req,res) => {
   const verity = tokenFunctions.isAuthorized(req)  //토큰 해독
   
   if(!verity){ //토큰 해독불가능
-    
+    // 유효기간 지난 토큰. or 해독 안되는 잘못된 토큰
     res.status(404).send('잘못된 접근')
   }else{
     await users.findOne({where:{email:verity.email}})
-    .then(res => {times.destroy({where:{user_id:res.id}})} )// times에 있는 데이터 삭제 위에서 알아온 id 와 같은 것들만
+    .then(res => {times.destroy({where:{user_id:res.id}})} )
       
     await users.destroy({where:{email:verity.email}})
     .then(() => {
@@ -37,5 +37,4 @@ const withdrawal = async (req,res) => {
 
 module.exports = withdrawal
 
-// 회원 탈퇴시 times 테이블에 있는 정보도 삭제해야함
-// if user_id 가 ? 인 것 모두 삭제 user_id 를 알아야함 
+// 회원 탈퇴하면 user 뿐만 아니라 times 테이블도 지워야함
