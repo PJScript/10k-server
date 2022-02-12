@@ -2,6 +2,10 @@ const { isAuthorized } = require('./tokenFunctions')
 const { users, times, goals } = require('../DataBase/models');
 
 const mypage = async (req, res) => {
+
+    // res.status(200).json('hi')
+    console.log('데이터')
+    console.log(req.headers,"요청 토큰 및 값")
     // 토큰 해독 검증
     const data = isAuthorized(req)
     console.log('data:', data); // id

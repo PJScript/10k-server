@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(
     cors({
         // 클라이언트 도메인 입력
-        origin: 'http://localhost:3000',
+        origin: '*',
         credentials: true,
         method: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS']
     })
